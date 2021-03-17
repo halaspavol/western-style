@@ -6,14 +6,14 @@ public class Supplier {
 	private String address;
 	private int phoneno;
 	private String email;
-	
+	 
 	public Long getCvr() {
 		return cvr;
 	}
 	public void setCvr(Long cvr) {
 		this.cvr = cvr;
 	}
-	public String getName() {
+	public String getName() { 
 		return name;
 	}
 	public void setName(String name) {
