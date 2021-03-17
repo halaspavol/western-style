@@ -3,6 +3,7 @@ package DB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class SaleOrderDB implements SaleOrderDBIF {
 
 	private SaleOrder buildObject(ResultSet rs) throws SQLException {
 		SaleOrder b = null;
-		//b = new SaleOrder(rs.getInt("id"),rs.getString("name"));
+		//b = new SaleOrder(rs.getLong("id"), rs.getDate("createDate"), rs.getInt("discount"), rs.getFloat("amount"), rs.getBoolean("deliveryStatus"), rs.getBoolean("deliveryStatus"), rs.getLong("invoiceId"), rs.getLong("customerId"));
 		return null;
 	}
 }
