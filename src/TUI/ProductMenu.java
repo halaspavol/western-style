@@ -1,5 +1,7 @@
 package TUI;
 
-public class ProductMenu {
+import Controller.ProductController;
 
+public class ProductMenu {
+	
 }
