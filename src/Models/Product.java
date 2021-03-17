@@ -30,6 +30,13 @@ public class Product {
 		this.countryOfOrigin = countryOfOrigin;
 	}
 	
+	public Price getPrice() {
+		return price;
+	}
+	public void setPrice(Price price) {
+		this.price = price;
+	}
+	
 	public int getMinStock() {
 		return minStock;
 	}
