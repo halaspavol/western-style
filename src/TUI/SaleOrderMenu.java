@@ -1,5 +1,5 @@
 package TUI;
 
-public class SalesMenu {
+public class SaleOrderMenu {
 
 }
