@@ -1,18 +1,29 @@
 package Models;
 
 public class Product {
-	private Long id;
+	private long id;
 	private String name;
 	private Price price;
 	private String countryOfOrigin;
 	private int minStock;
-	private Long supplierId;
-	private Long barcode;
+	private long supplierId;
+	private long barcode;
 	
-	public Long getId() {
+	public Product(long id, String name, Price price, String countryOfOrigin, int minStock, long supplierId,
+			long barcode) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.countryOfOrigin = countryOfOrigin;
+		this.minStock = minStock;
+		this.supplierId = supplierId;
+		this.barcode = barcode;
+	}
+	
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
@@ -44,17 +55,17 @@ public class Product {
 		this.minStock = minStock;
 	}
 	
-	public Long getSupplierId() {
+	public long getSupplierId() {
 		return supplierId;
 	}
-	public void setSupplierId(Long supplierId) {
+	public void setSupplierId(long supplierId) {
 		this.supplierId = supplierId;
 	}
 	
-	public Long getBarcode() {
+	public long getBarcode() {
 		return barcode;
 	}
-	public void setBarcode(Long barcode) {
+	public void setBarcode(long barcode) {
 		this.barcode = barcode;
 	}
 }

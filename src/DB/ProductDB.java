@@ -9,7 +9,7 @@ import Models.Product;
 public class ProductDB implements ProductDBIF {
 	public Product findProduct(String barcode) throws SQLException {
 		Product res = null;
-		String sql = "select * from table_students where barcode = " + barcode;
+		String sql = "select * from Products where barcode = " + barcode;
 		System.out.println("ProductDb, Query: " + sql);
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rs = s.executeQuery(sql);
@@ -24,8 +24,8 @@ public class ProductDB implements ProductDBIF {
 	}
 	
 	private Product buildObject(ResultSet rs) throws SQLException {
-		Product b = null;
-		//b = new SaleOrder(rs.getLong("id"), rs.getDate("createDate"), rs.getInt("discount"), rs.getFloat("amount"), rs.getBoolean("deliveryStatus"), rs.getBoolean("deliveryStatus"), rs.getLong("invoiceId"), rs.getLong("customerId"));
-		return null;
+		Product p = null;
+		//p = new Product(rs.getLong("id"), rs.getString("name"), rs.getObject("price"), rs.getString("countryOfOrigin"), rs.getInt("minStock"), rs.getLong("supplierId"), rs.getLong("barcode"));
+		return p;
 	}
 }
