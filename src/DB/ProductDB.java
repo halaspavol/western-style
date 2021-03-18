@@ -7,7 +7,8 @@ import java.sql.Statement;
 import Models.Product;
 
 public class ProductDB implements ProductDBIF {
-	public Product findProduct(String barcode) throws SQLException {
+
+	public Product findProduct(long barcode) throws SQLException {
 		Product res = null;
 		String sql = "select * from table_students where barcode = " + barcode;
 		System.out.println("ProductDb, Query: " + sql);
