@@ -10,7 +10,7 @@ public class ProductDB implements ProductDBIF {
 	public Product findProduct(String barcode) throws SQLException {
 		Product res = null;
 		String sql = "select * from table_students where barcode = " + barcode;
-		System.out.println("StudentDb, Query: " + sql);
+		System.out.println("ProductDb, Query: " + sql);
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rs = s.executeQuery(sql);
 			if(rs.next()) {
