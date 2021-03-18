@@ -1,8 +1,17 @@
 package TUI;
 
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import Controller.SaleOrderController;
 import Models.Customer;
 import Models.Product;
+import Models.SaleOrder;
+import Models.SaleOrderLine;
 
 public class SaleOrderMenu {
 	private SaleOrderController controller;
@@ -44,10 +53,47 @@ public class SaleOrderMenu {
 	}
 	
 	private void createOrder() {
-		Customer customer = this.controller.getCustomerByEmail("");
-		//while
-		Product product = this.controller.getProduct(0);
+		System.out.println("Email:");
+		String email = Reader.getStringFromUser();
+		Customer customer = this.controller.getCustomerByEmail(email);
 		
+		//Deliver date	
+		LocalDate deliveryDate = LocalDate.of(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear()).plusDays(15);
+		System.out.println("Deliver date: " + deliveryDate);
+		
+		//Deliver status		
+		boolean deliveryStatus = false;
+		System.out.println("Deliver status: " + deliveryStatus);
+		
+		//CreateDate
+		LocalDate createDate = LocalDate.now();
+		System.out.println("Create date: " + createDate);
+		
+		SaleOrder saleOrder = new SaleOrder(new ArrayList<SaleOrderLine>(), createDate, 0, deliveryStatus, deliveryDate, 0, customer.getId());
+		
+		boolean running = true;
+		while(running) {
+			Product product = this.controller.getProduct(0);
+			
+			System.out.println("Quantity:");
+			int qty = Reader.getIntFromUser();
+			
+			SaleOrderLine saleOrderLine = new SaleOrderLine(0, product, qty);
+			saleOrder.getSaleOrderLines().add(saleOrderLine);
+			
+			System.out.println("Would you like to add one more?");
+			System.out.println("0 - No, Any other number - Yes, add more products");
+			int choice = Reader.getIntFromUser();
+			if(choice == 0) {
+				running = false;
+			}
+		}
+		
+		try {
+			this.controller.createOrder(saleOrder);
+		} catch (SQLException e) {
+			System.out.println(e);
+		}		
 	}
 
 }
