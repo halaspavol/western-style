@@ -1,5 +1,10 @@
 package Controller;
 
-public class CustomerController {
+import Models.Customer;
 
+public class CustomerController {
+	
+	public Customer getCustomerByEmail(String email) {
+		return null;
+	}
 }
