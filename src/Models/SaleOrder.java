@@ -1,20 +1,23 @@
 package Models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class SaleOrder {
 
-	private Long id;
+	private long id;
 	private LocalDate createDate;
+	private List<SaleOrderLine> saleOrderLines;
 	private int discount;
 	private float amount;
 	private boolean deliveryStatus;
 	private LocalDate deliveryDate;
-	private Long invoiceId;
-	private Long customerId;
+	private long invoiceId;
+	private long customerId;
 	
-	public SaleOrder(Long id, LocalDate createDate, int discount, float amount, boolean deliveryStatus, LocalDate deliveryDate, Long invoiceId, Long customerId) {
+	public SaleOrder(long id, List<SaleOrderLine> saleOrderLines, LocalDate createDate, int discount, float amount, boolean deliveryStatus, LocalDate deliveryDate, long invoiceId, long customerId) {
 		this.id = id;
+		this.saleOrderLines = saleOrderLines;
 		this.createDate = createDate;
 		this.discount = discount;
 		this.amount = amount;
@@ -23,13 +26,21 @@ public class SaleOrder {
 		this.invoiceId = invoiceId;
 		this.customerId = customerId;
 	}
-	
-	public Long getId() {
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public List<SaleOrderLine> getSaleOrderLines() {
+		return saleOrderLines;
+	}
+
+	public void setSaleOrderLines(List<SaleOrderLine> saleOrderLines) {
+		this.saleOrderLines = saleOrderLines;
 	}
 
 	public LocalDate getCreateDate() {
@@ -72,19 +83,19 @@ public class SaleOrder {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public Long getInvoiceId() {
+	public long getInvoiceId() {
 		return invoiceId;
 	}
 
-	public void setInvoiceId(Long invoiceId) {
+	public void setInvoiceId(long invoiceId) {
 		this.invoiceId = invoiceId;
 	}
 
-	public Long getCustomerId() {
+	public long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
 	

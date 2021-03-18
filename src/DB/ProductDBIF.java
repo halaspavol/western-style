@@ -1,5 +1,9 @@
 package DB;
 
-public interface ProductDBIF {
+import java.sql.SQLException;
 
+import Models.Product;
+
+public interface ProductDBIF {
+	Product findProduct(String barcode) throws SQLException;
 }
