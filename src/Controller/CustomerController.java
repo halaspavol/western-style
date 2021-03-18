@@ -9,11 +9,9 @@ public class CustomerController {
 	
 	public Customer getCustomerByEmail(String email) throws SQLException {
 		try {
-			Customer customer = this.customerDB.findByEmail(email);
-			return customer;
+			return this.customerDB.findByEmail(email);
 		} 
 		catch (SQLException e) {
-			e.printStackTrace(); 
 			throw e;
 		}
 	}

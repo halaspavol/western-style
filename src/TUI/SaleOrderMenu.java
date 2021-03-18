@@ -27,9 +27,9 @@ public class SaleOrderMenu {
 	private int writeSaleOrderMenu() {
 		System.out.println("****Sales Menu****");
 		System.out.println("(1) Create Order");
-		System.out.println("(2) Find Order");
-		System.out.println("(3) Edit Order");
-		System.out.println("(4) Delete Order");
+		System.out.println("(2) Find Order //not implemented");
+		System.out.println("(3) Edit Order //not implemented");
+		System.out.println("(4) Delete Order //not implemented");
 		
 		Integer choice = null;
 		while(choice == null) {
@@ -45,55 +45,69 @@ public class SaleOrderMenu {
 	private void saleOrderMenu() {
 		boolean running = true;
 		while(running) {
-			int choice = writeSaleOrderMenu();
-			switch(choice) {
-			
+			int key = writeSaleOrderMenu();
+			switch (key) {
+				case 1: {
+					this.createOrder();
+				}
+				default:
+					throw new IllegalArgumentException("Unexpected value: " + key);
 			}
 		}
 	}
 	
-	private void createOrder() {
-		System.out.println("Email:");
-		String email = Reader.getStringFromUser();
-		Customer customer = this.controller.getCustomerByEmail(email);
-		
-		//Deliver date	
-		LocalDate deliveryDate = LocalDate.of(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear()).plusDays(15);
-		System.out.println("Deliver date: " + deliveryDate);
-		
-		//Deliver status		
-		boolean deliveryStatus = false;
-		System.out.println("Deliver status: " + deliveryStatus);
-		
-		//CreateDate
-		LocalDate createDate = LocalDate.now();
-		System.out.println("Create date: " + createDate);
-		
-		SaleOrder saleOrder = new SaleOrder(new ArrayList<SaleOrderLine>(), createDate, 0, deliveryStatus, deliveryDate, 0, customer.getId());
-		
-		boolean running = true;
-		while(running) {
-			Product product = this.controller.getProduct(0);
-			
-			System.out.println("Quantity:");
-			int qty = Reader.getIntFromUser();
-			
-			SaleOrderLine saleOrderLine = new SaleOrderLine(0, product, qty);
-			saleOrder.getSaleOrderLines().add(saleOrderLine);
-			
-			System.out.println("Would you like to add one more?");
-			System.out.println("0 - No, Any other number - Yes, add more products");
-			int choice = Reader.getIntFromUser();
-			if(choice == 0) {
-				running = false;
-			}
-		}
-		
+	private void createOrder() {		
 		try {
-			this.controller.createOrder(saleOrder);
+			System.out.println("Email:");
+			String email = Reader.getStringFromUser();
+			Customer customer;
+			customer = this.controller.getCustomerByEmail(email);
+			
+			//Deliver date	
+			LocalDate deliveryDate = LocalDate.of(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear()).plusDays(15);
+			System.out.println("Deliver date: " + deliveryDate);
+			
+			//Deliver status		
+			boolean deliveryStatus = false;
+			System.out.println("Deliver status: " + deliveryStatus);
+			
+			//CreateDate
+			LocalDate createDate = LocalDate.now();
+			System.out.println("Create date: " + createDate);
+			
+			SaleOrder saleOrder = new SaleOrder(new ArrayList<SaleOrderLine>(), createDate, 0, deliveryStatus, deliveryDate, null, customer);
+			
+			boolean running = true;
+			while(running) {
+				Product product;
+				try {
+					product = this.controller.getProduct(0);
+					
+					System.out.println("Quantity:");
+					int qty = Reader.getIntFromUser();
+					
+					SaleOrderLine saleOrderLine = new SaleOrderLine(0, product, qty);
+					saleOrder.getSaleOrderLines().add(saleOrderLine);
+				} catch (SQLException e) {
+					System.out.println(e);
+				}						
+				
+				System.out.println("Would you like to add one more?");
+				System.out.println("0 - No, Any other number - Yes, add more products");
+				int choice = Reader.getIntFromUser();
+				if(choice == 0) {
+					running = false;
+				}
+			}
+			
+			try {
+				this.controller.createOrder(saleOrder);
+			} catch (SQLException e) {
+				System.out.println(e);
+			}	
 		} catch (SQLException e) {
 			System.out.println(e);
-		}		
+		}			
 	}
 
 }

@@ -11,28 +11,30 @@ public class SaleOrder {
 	private float amount;
 	private boolean deliveryStatus;
 	private LocalDate deliveryDate;
-	private long invoiceId;
-	private long customerId;
-	
-	public SaleOrder(long id, ArrayList<SaleOrderLine> saleOrderLines, LocalDate createDate, float amount, boolean deliveryStatus, LocalDate deliveryDate, long invoiceId, long customerId) {
+	private Invoice invoice;
+	private Customer customer;
+
+	public SaleOrder(long id, ArrayList<SaleOrderLine> saleOrderLines, LocalDate createDate, float amount,
+			boolean deliveryStatus, LocalDate deliveryDate, Invoice invoice, Customer customer) {
 		this.id = id;
 		this.saleOrderLines = saleOrderLines;
 		this.createDate = createDate;
 		this.amount = amount;
 		this.deliveryStatus = deliveryStatus;
 		this.deliveryDate = deliveryDate;
-		this.invoiceId = invoiceId;
-		this.customerId = customerId;
+		this.invoice = invoice;
+		this.customer = customer;
 	}
 
-	public SaleOrder(ArrayList<SaleOrderLine> saleOrderLines, LocalDate createDate, float amount, boolean deliveryStatus, LocalDate deliveryDate, long invoiceId, long customerId) {
+	public SaleOrder(ArrayList<SaleOrderLine> saleOrderLines, LocalDate createDate, int amount, boolean deliveryStatus,
+			LocalDate deliveryDate, Invoice invoice, Customer customer) {
 		this.saleOrderLines = saleOrderLines;
 		this.createDate = createDate;
 		this.amount = amount;
 		this.deliveryStatus = deliveryStatus;
 		this.deliveryDate = deliveryDate;
-		this.invoiceId = invoiceId;
-		this.customerId = customerId;
+		this.invoice = invoice;
+		this.customer = customer;
 	}
 
 	public long getId() {
@@ -42,7 +44,7 @@ public class SaleOrder {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	public ArrayList<SaleOrderLine> getSaleOrderLines() {
 		return saleOrderLines;
 	}
@@ -83,21 +85,20 @@ public class SaleOrder {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public long getInvoiceId() {
-		return invoiceId;
+	public Invoice getinvoice() {
+		return invoice;
 	}
 
-	public void setInvoiceId(long invoiceId) {
-		this.invoiceId = invoiceId;
+	public void setinvoice(Invoice invoice) {
+		this.invoice = invoice;
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public Customer getcustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public void setcustomer(Customer customer) {
+		this.customer = customer;
 	}
-	
 
 }

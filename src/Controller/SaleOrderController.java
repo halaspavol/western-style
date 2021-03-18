@@ -22,16 +22,23 @@ public class SaleOrderController {
 		try {
 			this.saleOrderDB.create(saleOrder);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw e;
 		}
 	}
 	
-	public Customer getCustomerByEmail(String email) {
-		return this.customerController.getCustomerByEmail(email);
+	public Customer getCustomerByEmail(String email) throws SQLException {
+		try {
+			return this.customerController.getCustomerByEmail(email);
+		} catch (SQLException e) {
+			throw e;
+		}
 	}
 	
-	public Product getProduct(long barcode) {
-		return this.getProduct(barcode);
+	public Product getProduct(long barcode) throws SQLException {		
+		try {
+			return this.productController.getProduct(barcode);
+		} catch (SQLException e) {
+			throw e;
+		}
 	}
 }

@@ -3,24 +3,19 @@ package TUI;
 import Controller.SaleOrderController;
 
 public class MainMenu {
+	private static SaleOrderMenu saleOrderMenu = new SaleOrderMenu();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello world");
+		runMainMenu();
 	}
 	
-	private SaleOrderMenu salesMenu = new SaleOrderMenu();
-	
-	//private SaleOrderController = new SaleOrderController();
-
-	
-	public void runMainMenu() {
+	public static void runMainMenu() {
 		boolean running = true;
 		while(running) {
 			int choice = writeMainMenu();
 			switch(choice) {
 			case 1: {
-				//saleOrderMenu.start();
+				saleOrderMenu.start();
 				break;
 			}
 			case 0: {
@@ -34,7 +29,7 @@ public class MainMenu {
 		}
 	}
 	
-	private int writeMainMenu() {
+	private static int writeMainMenu() {
 		System.out.println("**** Main Menu ****");
 		System.out.println("(1) Sales Menu");
 		System.out.println("(0) Quit Program");
@@ -48,11 +43,5 @@ public class MainMenu {
 		}
 		
 		return choice;
-	}
-	
-	private void generateData() {
-		System.out.println();
-		//TODO
-	}
-	
+	}	
 }

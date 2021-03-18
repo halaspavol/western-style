@@ -14,7 +14,6 @@ public class ProductController {
 			return product;
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
 			throw e;
 		}				
 	}
