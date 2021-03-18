@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class SaleOrder {
 
-	private long id;
+	private Long id;
 	private LocalDate createDate;
 	private int discount;
 	private float amount;
 	private boolean deliveryStatus;
 	private LocalDate deliveryDate;
-	private long invoiceId;
-	private long customerId;
+	private Long invoiceId;
+	private Long customerId;
 	
-	public SaleOrder(long id, LocalDate createDate, int discount, float amount, boolean deliveryStatus, LocalDate deliveryDate, long invoiceId, long customerId) {
+	public SaleOrder(Long id, LocalDate createDate, int discount, float amount, boolean deliveryStatus, LocalDate deliveryDate, Long invoiceId, Long customerId) {
 		this.id = id;
 		this.createDate = createDate;
 		this.discount = discount;
@@ -23,12 +23,12 @@ public class SaleOrder {
 		this.invoiceId = invoiceId;
 		this.customerId = customerId;
 	}
-
-	public long getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -72,19 +72,19 @@ public class SaleOrder {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public long getInvoiceId() {
+	public Long getInvoiceId() {
 		return invoiceId;
 	}
 
-	public void setInvoiceId(long invoiceId) {
+	public void setInvoiceId(Long invoiceId) {
 		this.invoiceId = invoiceId;
 	}
 
-	public long getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(long customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 	
