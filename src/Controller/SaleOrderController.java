@@ -17,7 +17,10 @@ public class SaleOrderController {
 	private InvoiceController invoiceController;
 	
 	public SaleOrderController() {
-		saleOrderDB = new SaleOrderDB();
+		this.saleOrderDB = new SaleOrderDB();
+		this.customerController = new CustomerController();
+		this.productController = new ProductController();
+		this.invoiceController = new InvoiceController();
 	}
 	
 	public SaleOrder createOrder(SaleOrder saleOrder) throws SQLException {
