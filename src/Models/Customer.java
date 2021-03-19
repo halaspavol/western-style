@@ -1,18 +1,29 @@
 package Models;
 
 public class Customer {
-	private Long id;
+	private long id;
 	private String firstName;
 	private String lastName;
-	private Long addressId;
+	private Address address;
 	private int phoneNo;
 	private String email;
+	private boolean isLegal;
+
+	public Customer(long id, String firstName, String lastName, Address address, int phoneNo, 
+			String email, boolean isLegal) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.phoneNo = phoneNo;
+		this.email = email;
+		this.isLegal = isLegal;
+	}
 	
-	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -27,11 +38,11 @@ public class Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Long getAddressId() {
-		return addressId;
+	public Address getAddressId() {
+		return address;
 	}
-	public void setAddressId(Long addressId) {
-		this.addressId = addressId;
+	public void setAddressId(Address address) {
+		this.address = address;
 	}
 	public int getPhoneNo() {
 		return phoneNo;
@@ -44,5 +55,11 @@ public class Customer {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public boolean isLegal() {
+		return isLegal;
+	}
+	public void setLegal(boolean isLegal) {
+		this.isLegal = isLegal;
 	}
 }
