@@ -78,12 +78,8 @@ public class ProductDB implements ProductDBIF {
 	}
 	
 	private Price buildPrice(ResultSet rs) throws SQLException {
-		String y = rs.getString("start_date").substring(0,4);
-		int year = Integer.parseInt(y);
-		int month = Integer.parseInt(rs.getString("start_date").substring(5,7));
-		int day = Integer.parseInt(rs.getString("start_date").substring(8,10));
 
-		LocalDate startDate = LocalDate.of(year, month, day);	
+		LocalDate startDate = LocalDate.now();	
 		
 		return new Price(rs.getLong("id"), rs.getLong("product_id"), rs.getFloat("price"), startDate, PriceType.valueOf(rs.getString("type"))); //TODO: get address
 	}
