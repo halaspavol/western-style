@@ -1,16 +1,32 @@
 package Models;
 
 public class Supplier {
-	private Long cvr;
+	private long id;	
+	private long cvr;
 	private String name;
 	private String address;
 	private int phoneno;
 	private String email;
-	 
-	public Long getCvr() {
+		 
+	public Supplier(long id,long cvr, String name, String address, int phoneno, String email) {
+		this.id = id;
+		this.cvr = cvr;
+		this.name = name;
+		this.address = address;
+		this.phoneno = phoneno;
+		this.email = email;
+	}
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getCvr() {
 		return cvr;
 	}
-	public void setCvr(Long cvr) {
+	public void setCvr(long cvr) {
 		this.cvr = cvr;
 	}
 	public String getName() { 
