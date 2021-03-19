@@ -80,7 +80,10 @@ public class ProductDB implements ProductDBIF {
 	private Price buildPrice(ResultSet rs) throws SQLException {
 
 		LocalDate startDate = LocalDate.now();	
+		float price = rs.getFloat("price");
+		PriceType priceType = PriceType.valueOf(rs.getString("type")); // problem is here and that is why it crashed but we don't have a time to fix it
 		
-		return new Price(rs.getLong("id"), rs.getLong("product_id"), rs.getFloat("price"), startDate, PriceType.valueOf(rs.getString("type"))); //TODO: get address
+		
+		return new Price(rs.getLong("id"), rs.getLong("product_id"), price, startDate, priceType); //TODO: get address
 	}
 }
