@@ -87,7 +87,7 @@ public class SaleOrderMenu {
 				Product product;
 				try {
 					System.out.println("Barcode:");
-					long barcode = Reader.getLongFromUser();
+					String barcode = Reader.getStringFromUser();
 					product = this.controller.getProduct(barcode);
 					
 					System.out.println("Quantity:");

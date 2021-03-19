@@ -47,7 +47,7 @@ public class SaleOrderController {
 		}
 	}
 	
-	public Product getProduct(long barcode) throws SQLException {		
+	public Product getProduct(String barcode) throws SQLException {		
 		try {
 			return this.productController.getProduct(barcode);
 		} catch (SQLException e) {

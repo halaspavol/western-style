@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class DBConnection {   
 	//Constants used to get access to the database
 	
-	private static final String  driver = "jdbc:sqlserver://hildur.ucn.dk:1433";;
+	private static final String  driver = "jdbc:sqlserver://hildur.ucn.dk:1433";
     private static final String  databaseName = ";databaseName=dmaj0920_1089350";
     
     private static String  userName = "; user=dmaj0920_1089350";

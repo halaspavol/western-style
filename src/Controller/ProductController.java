@@ -8,7 +8,7 @@ import Models.Product;
 public class ProductController {
 	private ProductDB productDB = new ProductDB();
 	
-	public Product getProduct(long barcode) throws SQLException {
+	public Product getProduct(String barcode) throws SQLException {
 		try {
 			Product product = this.productDB.findProduct(barcode);
 			return product;

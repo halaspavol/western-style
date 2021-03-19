@@ -9,10 +9,10 @@ public class Product {
 	private String countryOfOrigin;
 	private int minStock;
 	private Supplier supplier;
-	private long barcode;
+	private String barcode;
 	
 	public Product(long id, String name, ArrayList<Price> prices, String countryOfOrigin, int minStock, Supplier supplier,
-			long barcode) {
+			String barcode) {
 		this.id = id;
 		this.name = name;
 		this.prices = prices;
@@ -64,10 +64,10 @@ public class Product {
 		this.supplier = supplier;
 	}
 	
-	public long getBarcode() {
+	public String getBarcode() {
 		return barcode;
 	}
-	public void setBarcode(long barcode) {
+	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
 }
