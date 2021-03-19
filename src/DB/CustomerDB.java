@@ -15,7 +15,7 @@ public class CustomerDB implements CustomerDBIF {
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rs = s.executeQuery(sql);
 			if(rs.next()) {
-				String addressSql = String.format("SELECT address.id, address.street, address.house_no, address.city_id, city.city as city, city.zip as zip FROM Address as address LEFT JOIN City AS city ON city.id = Address.city_id where address.id = '%s'", rs.getInt("address_id"));
+				String addressSql = "SELECT address.id, address.street, address.house_no, address.city_id, city.city as city, city.zip as zip FROM Address as address LEFT JOIN City AS city ON city.id = Address.city_id where address.id = " + rs.getInt("address_id");
 				try (Statement stmt = DBConnection.getInstance().getConnection().createStatement()) {
 					ResultSet rsAddress = stmt.executeQuery(addressSql);
 					if(rsAddress.next()) {

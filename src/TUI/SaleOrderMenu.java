@@ -68,7 +68,7 @@ public class SaleOrderMenu {
 			customer = this.controller.getCustomerByEmail(email);
 			
 			//Deliver date	
-			LocalDate deliveryDate = LocalDate.of(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear()).plusDays(15);
+			LocalDate deliveryDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()).plusDays(15);
 			System.out.println("Deliver date: " + deliveryDate);
 			
 			//Deliver status		
