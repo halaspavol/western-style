@@ -6,9 +6,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Optional;
 
 import Controller.SaleOrderController;
 import Models.Customer;
+import Models.Invoice;
+import Models.Price;
+import Models.PriceType;
 import Models.Product;
 import Models.SaleOrder;
 import Models.SaleOrderLine;
@@ -77,17 +81,28 @@ public class SaleOrderMenu {
 			
 			SaleOrder saleOrder = new SaleOrder(new ArrayList<SaleOrderLine>(), createDate, 0, deliveryStatus, deliveryDate, null, customer);
 			
+			System.out.println("Add products:");
 			boolean running = true;
 			while(running) {
 				Product product;
 				try {
-					product = this.controller.getProduct(0);
+					System.out.println("Barcode:");
+					long barcode = Reader.getLongFromUser();
+					product = this.controller.getProduct(barcode);
 					
 					System.out.println("Quantity:");
 					int qty = Reader.getIntFromUser();
 					
-					SaleOrderLine saleOrderLine = new SaleOrderLine(0, product, qty);
-					saleOrder.getSaleOrderLines().add(saleOrderLine);
+					Optional<Price> productPrice = product.getPrices().stream().filter(price -> price.getType() == PriceType.SELL).findFirst();
+					if(productPrice.isPresent()) {
+						SaleOrderLine saleOrderLine = new SaleOrderLine(0, product, qty);
+						saleOrder.getSaleOrderLines().add(saleOrderLine);
+						saleOrder.setAmount(saleOrder.getAmount() + productPrice.get().getPrice() * qty);
+					}
+					else {
+						System.out.println("Err: Can't calculate price. Product wasn't added to order");
+					}				
+					
 				} catch (SQLException e) {
 					System.out.println(e);
 				}						
@@ -101,7 +116,8 @@ public class SaleOrderMenu {
 			}
 			
 			try {
-				this.controller.createOrder(saleOrder);
+				saleOrder = this.controller.createOrder(saleOrder);
+				Invoice invoice = this.controller.createInvoice(new Invoice(LocalDate.now(), this.controller.calculatePrice(customer, saleOrder.getAmount())));
 			} catch (SQLException e) {
 				System.out.println(e);
 			}	

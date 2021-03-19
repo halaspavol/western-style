@@ -1,19 +1,21 @@
 package Models;
 
+import java.util.ArrayList;
+
 public class Product {
 	private long id;
 	private String name;
-	private Price price;
+	private ArrayList<Price> prices;
 	private String countryOfOrigin;
 	private int minStock;
 	private long supplierId;
 	private long barcode;
 	
-	public Product(long id, String name, Price price, String countryOfOrigin, int minStock, long supplierId,
+	public Product(long id, String name, ArrayList<Price> prices, String countryOfOrigin, int minStock, long supplierId,
 			long barcode) {
 		this.id = id;
 		this.name = name;
-		this.price = price;
+		this.prices = prices;
 		this.countryOfOrigin = countryOfOrigin;
 		this.minStock = minStock;
 		this.supplierId = supplierId;
@@ -41,11 +43,11 @@ public class Product {
 		this.countryOfOrigin = countryOfOrigin;
 	}
 	
-	public Price getPrice() {
-		return price;
+	public ArrayList<Price> getPrices() {
+		return prices;
 	}
-	public void setPrice(Price price) {
-		this.price = price;
+	public void setPrices(ArrayList<Price> prices) {
+		this.prices = prices;
 	}
 	
 	public int getMinStock() {

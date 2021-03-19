@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import DB.DBConnection;
 import DB.SaleOrderDB;
 import Models.Customer;
+import Models.Invoice;
 import Models.Product;
 import Models.SaleOrder;
 
@@ -13,14 +14,23 @@ public class SaleOrderController {
 	private SaleOrderDB saleOrderDB;
 	private ProductController productController;
 	private CustomerController customerController;
+	private InvoiceController invoiceController;
 	
 	public SaleOrderController() {
 		saleOrderDB = new SaleOrderDB();
 	}
 	
-	public void createOrder(SaleOrder saleOrder) throws SQLException {
+	public SaleOrder createOrder(SaleOrder saleOrder) throws SQLException {
 		try {
-			this.saleOrderDB.create(saleOrder);
+			return this.saleOrderDB.create(saleOrder);
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	public Invoice createInvoice(Invoice invoice) throws SQLException {
+		try {
+			return this.invoiceController.createInvoice(invoice);
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -39,6 +49,18 @@ public class SaleOrderController {
 			return this.productController.getProduct(barcode);
 		} catch (SQLException e) {
 			throw e;
+		}
+	}
+	
+	public float calculatePrice(Customer customer, float amount) {
+		if(customer.isLegal() && amount >= 1500) {
+			return (float)(amount - amount*0.1);
+		}
+		else if(!customer.isLegal() && amount >= 2500) {
+			return amount - 45;
+		}
+		else {
+			return amount;
 		}
 	}
 }

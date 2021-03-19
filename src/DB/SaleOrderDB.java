@@ -27,7 +27,7 @@ public class SaleOrderDB implements SaleOrderDBIF {
 		//String sql = String.format("insert into table_students (id, name) values ('%s', '%s')", saleOrder.getId(), saleOrder.getName());
 		String sql = "";
 		int id = DBConnection.getInstance().executeUpdate(sql);
-		//saleOrder.setId(id);
+		saleOrder.setId(id);
 		return saleOrder;
 	}
 	

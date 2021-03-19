@@ -3,28 +3,36 @@ package Models;
 import java.time.LocalDate;
 
 public class Price {
-	private Long id;
-	private Long productId;
-	private Float price;
+	private long id;
+	private long productId;
+	private float price;
 	private LocalDate startDate;
-	private Long typeId;
+	private PriceType type;
 	
-	public Long getId() {
+	public Price(long id, long productId, float price, LocalDate startDate, PriceType type) {
+		this.id = id;
+		this.productId = productId;
+		this.price = price;
+		this.startDate = startDate;
+		this.type = type;
+	}
+	
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public Long getProductId() {
+	public long getProductId() {
 		return productId;
 	}
-	public void setProductId(Long productId) {
+	public void setProductId(long productId) {
 		this.productId = productId;
 	}
-	public Float getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(Float price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	public LocalDate getStartDate() {
@@ -33,10 +41,10 @@ public class Price {
 	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public Long getTypeId() {
-		return typeId;
+	public PriceType getType() {
+		return type;
 	}
-	public void setTypeId(Long typeId) {
-		this.typeId = typeId;
+	public void setType(PriceType type) {
+		this.type = type;
 	}	
 }
