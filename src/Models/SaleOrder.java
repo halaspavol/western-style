@@ -69,7 +69,7 @@ public class SaleOrder {
 		this.amount = amount;
 	}
 
-	public boolean isDeliveryStatus() {
+	public boolean getDeliveryStatus() {
 		return deliveryStatus;
 	}
 
@@ -100,5 +100,4 @@ public class SaleOrder {
 	public void setcustomer(Customer customer) {
 		this.customer = customer;
 	}
-
 }

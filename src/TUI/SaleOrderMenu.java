@@ -117,7 +117,10 @@ public class SaleOrderMenu {
 			
 			try {
 				saleOrder = this.controller.createOrder(saleOrder);
-				Invoice invoice = this.controller.createInvoice(new Invoice(LocalDate.now(), this.controller.calculatePrice(customer, saleOrder.getAmount())));
+				Invoice invoice = new Invoice(
+						LocalDate.of(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear()).plusDays(5), 
+						this.controller.calculatePrice(customer, saleOrder.getAmount()));
+				invoice = this.controller.createInvoice(invoice);
 			} catch (SQLException e) {
 				System.out.println(e);
 			}	

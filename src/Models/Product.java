@@ -57,10 +57,10 @@ public class Product {
 		this.minStock = minStock;
 	}
 	
-	public Supplier getsupplier() {
+	public Supplier getSupplier() {
 		return supplier;
 	}
-	public void setsupplier(Supplier supplier) {
+	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
 	
