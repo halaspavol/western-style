@@ -5,11 +5,11 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private Address address;
-	private int phoneNo;
+	private String phoneNo;
 	private String email;
 	private boolean isLegal;
 
-	public Customer(long id, String firstName, String lastName, Address address, int phoneNo, 
+	public Customer(long id, String firstName, String lastName, Address address, String phoneNo, 
 			String email, boolean isLegal) {
 		this.id = id;
 		this.firstName = firstName;
@@ -44,7 +44,7 @@ public class Customer {
 	public void setAddressId(Address address) {
 		this.address = address;
 	}
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 	public void setPhoneNo(int phoneNo) {
