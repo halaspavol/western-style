@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import Models.Invoice;
 import Models.SaleOrder;
 
-public abstract class InvoiceDB implements InvoiceDBIF {
+public class InvoiceDB implements InvoiceDBIF {
 
 	public Invoice create(Invoice invoice, SaleOrder saleOrder) throws SQLException {
 		String sql = String.format("insert into Invoice (payment_date, amount, sale_order_id) values ('%s', '%s', '%s')", invoice.getPaymentDate(), invoice.getAmount(), saleOrder.getId());

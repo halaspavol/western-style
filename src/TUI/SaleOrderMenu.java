@@ -120,7 +120,7 @@ public class SaleOrderMenu {
 				Invoice invoice = new Invoice(
 						LocalDate.of(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear()).plusDays(5), 
 						this.controller.calculatePrice(customer, saleOrder.getAmount()));
-				invoice = this.controller.createInvoice(invoice);
+				invoice = this.controller.createInvoice(invoice, saleOrder);
 			} catch (SQLException e) {
 				System.out.println(e);
 			}	

@@ -16,7 +16,7 @@ public class Price {
 		this.startDate = startDate;
 		this.type = type;
 	}
-	
+
 	public long getId() {
 		return id;
 	}

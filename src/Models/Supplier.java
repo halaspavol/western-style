@@ -4,11 +4,11 @@ public class Supplier {
 	private long id;	
 	private long cvr;
 	private String name;
-	private String address;
+	private Address address;
 	private int phoneno;
 	private String email;
 		 
-	public Supplier(long id,long cvr, String name, String address, int phoneno, String email) {
+	public Supplier(long id,long cvr, String name, Address address, int phoneno, String email) {
 		this.id = id;
 		this.cvr = cvr;
 		this.name = name;
@@ -35,10 +35,10 @@ public class Supplier {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	public int getPhoneno() {

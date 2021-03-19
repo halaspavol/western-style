@@ -28,9 +28,9 @@ public class SaleOrderController {
 		}
 	}
 	
-	public Invoice createInvoice(Invoice invoice) throws SQLException {
+	public Invoice createInvoice(Invoice invoice, SaleOrder saleOrder) throws SQLException {
 		try {
-			return this.invoiceController.createInvoice(invoice);
+			return this.invoiceController.createInvoice(invoice, saleOrder);
 		} catch (SQLException e) {
 			throw e;
 		}

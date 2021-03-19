@@ -31,13 +31,13 @@ public class Address {
 	public String getHouseNo() {
 		return houseNo;
 	}
-	public void setHouseNo(int houseNo) {
+	public void setHouseNo(String houseNo) {
 		this.houseNo = houseNo;
 	}
 	public String getZipcode() {
 		return zipcode;
 	}
-	public void setZipcode(int zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 	public String getCity() {
