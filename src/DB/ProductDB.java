@@ -32,7 +32,7 @@ public class ProductDB implements ProductDBIF {
 				}
 				
 				String sqlSupplier = String.format("select * from Supplier where id = '%s'", rsProduct.getLong("supplier_id"));
-				ResultSet rsSupplier = s.executeQuery(sqlProduct);
+				ResultSet rsSupplier = s.executeQuery(sqlSupplier);
 				
 				if(rsSupplier.next()) {
 					try (Statement stmt = DBConnection.getInstance().getConnection().createStatement()) {
