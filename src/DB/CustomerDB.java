@@ -9,7 +9,7 @@ import Models.Customer;
 public class CustomerDB implements CustomerDBIF {
 	public Customer findByEmail(String email) throws SQLException {
 		Customer res = null;
-		String sql = "select * from table_students where email = " + email;
+		String sql = "select * from Customer where email = " + email;
 		System.out.println("StudentDb, Query: " + sql);
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rs = s.executeQuery(sql);
