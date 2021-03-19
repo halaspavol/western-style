@@ -10,14 +10,14 @@ public class DBConnection {
 	private static DBConnection dbConnection; //unique instance of the class
 	
 	//information about the connection to the database
-	private static final String dbName = "dmaj0920_1086315";
+	private static final String dbName = "dmaj0920_1089350";
 	private static final String serverName = "hildur.ucn.dk";
 	private static final String instanceName = "SQLEXPRESS17";
 	private static final String portNumber = "1433";
 
 	// constructor - private because of singleton pattern
 	private DBConnection() {
-		String urlString = String.format("jdbc:sqlserver://%s\\%s:%s;databaseName=%s", 
+		String urlString = String.format("jdbc:serverName://%s\\%s:%s;dbName=%s", 
 				serverName, instanceName, portNumber, dbName) ;
 	
 		String userName = getUserName();
@@ -68,7 +68,7 @@ public class DBConnection {
 	
 	private String getUserName() {
 		//here we should read from a configuration file or ...
-		return "dmaj0920_1086315";
+		return "1089350";
 	}
 	
 	private String getPassword() {
