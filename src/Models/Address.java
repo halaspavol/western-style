@@ -3,11 +3,11 @@ package Models;
 public class Address {
 	private Long addressId;
 	private String street;
-	private int houseNo;
-	private int zipcode;
+	private String houseNo;
+	private String zipcode;
 	private String city;
 		
-	public Address(Long addressId, String street, int houseNo, int zipcode, String city) {
+	public Address(Long addressId, String street, String houseNo, String zipcode, String city) {
 		super();
 		this.addressId = addressId;
 		this.street = street;
@@ -28,13 +28,13 @@ public class Address {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public int getHouseNo() {
+	public String getHouseNo() {
 		return houseNo;
 	}
 	public void setHouseNo(int houseNo) {
 		this.houseNo = houseNo;
 	}
-	public int getZipcode() {
+	public String getZipcode() {
 		return zipcode;
 	}
 	public void setZipcode(int zipcode) {
