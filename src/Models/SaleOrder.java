@@ -26,7 +26,7 @@ public class SaleOrder {
 		this.customer = customer;
 	}
 
-	public SaleOrder(ArrayList<SaleOrderLine> saleOrderLines, LocalDate createDate, int amount, boolean deliveryStatus,
+	public SaleOrder(ArrayList<SaleOrderLine> saleOrderLines, LocalDate createDate, float amount, boolean deliveryStatus,
 			LocalDate deliveryDate, Invoice invoice, Customer customer) {
 		this.saleOrderLines = saleOrderLines;
 		this.createDate = createDate;

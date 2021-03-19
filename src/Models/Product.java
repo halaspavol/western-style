@@ -8,17 +8,17 @@ public class Product {
 	private ArrayList<Price> prices;
 	private String countryOfOrigin;
 	private int minStock;
-	private long supplierId;
+	private Supplier supplier;
 	private long barcode;
 	
-	public Product(long id, String name, ArrayList<Price> prices, String countryOfOrigin, int minStock, long supplierId,
+	public Product(long id, String name, ArrayList<Price> prices, String countryOfOrigin, int minStock, Supplier supplier,
 			long barcode) {
 		this.id = id;
 		this.name = name;
 		this.prices = prices;
 		this.countryOfOrigin = countryOfOrigin;
 		this.minStock = minStock;
-		this.supplierId = supplierId;
+		this.supplier = supplier;
 		this.barcode = barcode;
 	}
 	
@@ -57,11 +57,11 @@ public class Product {
 		this.minStock = minStock;
 	}
 	
-	public long getSupplierId() {
-		return supplierId;
+	public Supplier getsupplier() {
+		return supplier;
 	}
-	public void setSupplierId(long supplierId) {
-		this.supplierId = supplierId;
+	public void setsupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 	
 	public long getBarcode() {

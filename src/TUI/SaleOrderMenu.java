@@ -95,7 +95,7 @@ public class SaleOrderMenu {
 					
 					Optional<Price> productPrice = product.getPrices().stream().filter(price -> price.getType() == PriceType.SELL).findFirst();
 					if(productPrice.isPresent()) {
-						SaleOrderLine saleOrderLine = new SaleOrderLine(0, product, qty);
+						SaleOrderLine saleOrderLine = new SaleOrderLine(product, qty);
 						saleOrder.getSaleOrderLines().add(saleOrderLine);
 						saleOrder.setAmount(saleOrder.getAmount() + productPrice.get().getPrice() * qty);
 					}
