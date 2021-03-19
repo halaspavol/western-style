@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import Models.Address;
 import Models.Price;
 import Models.PriceType;
 import Models.Product;
@@ -15,7 +16,7 @@ public class ProductDB implements ProductDBIF {
 
 	public Product findProduct(long barcode) throws SQLException {
 		Product res = null;
-		String sqlProduct = "select * from Product where barcode = " + barcode;
+		String sqlProduct = String.format("select * from Product where barcode = '%s'", barcode);
 		
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rsProduct = s.executeQuery(sqlProduct);
@@ -30,12 +31,21 @@ public class ProductDB implements ProductDBIF {
 					res.setPrices(buildPrices(rsPrices));		
 				}
 				
-				
-				String sqlSupplier = "select * from Supplier where id = " + rsProduct.getLong("supplier_id");
+				String sqlSupplier = String.format("select * from Supplier where id = '%s'", rsProduct.getLong("supplier_id"));
 				ResultSet rsSupplier = s.executeQuery(sqlProduct);
 				
 				if(rsSupplier.next()) {
-					res.setSupplier(buildSupplier(rsSupplier));					
+					try (Statement stmt = DBConnection.getInstance().getConnection().createStatement()) {
+						String addressSql = String.format("SELECT address.id, address.street, address.house_no, address.city_id, city.city as city, city.zip as zip FROM Address as address LEFT JOIN City AS city ON city.id = Address.city_id where address.id = '%s'", rsSupplier.getInt("address_id"));
+						ResultSet rsAddress = stmt.executeQuery(addressSql);
+						if(rsAddress.next()) {
+							Address address = buildObjectAddress(rsAddress);
+							res.setSupplier(buildSupplier(rsSupplier, address));
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+						throw e;
+					}
 					//get address
 				}
 			}
@@ -50,8 +60,14 @@ public class ProductDB implements ProductDBIF {
 		return new Product(rs.getLong("id"), rs.getString("product_name"), new ArrayList<Price>(), rs.getString("country_of_origin"), rs.getInt("min_stock"), null, rs.getLong("barcode"));
 	}
 	
-	private Supplier buildSupplier(ResultSet rs) throws SQLException {
-		return new Supplier(rs.getLong("id"), rs.getLong("cvr"), rs.getString("supplier_name"), null,rs.getInt("phone_no"), rs.getString("email")); //TODO: get address
+	private Supplier buildSupplier(ResultSet rs, Address address) throws SQLException {
+		return new Supplier(rs.getLong("id"), rs.getLong("cvr"), rs.getString("supplier_name"), address, rs.getInt("phone_no"), rs.getString("email"));
+	}
+	
+	private Address buildObjectAddress(ResultSet rs) throws SQLException {
+		Address address = null;
+		address = new Address(rs.getLong("id"), rs.getString("street"), rs.getString("house_no"), rs.getString("zip"), rs.getString("city"));
+		return address;
 	}
 	
 	private ArrayList<Price> buildPrices(ResultSet rs) throws SQLException {
