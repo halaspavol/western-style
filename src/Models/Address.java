@@ -6,7 +6,15 @@ public class Address {
 	private int houseNo;
 	private int zipcode;
 	private String city;
-	
+		
+	public Address(Long addressId, String street, int houseNo, int zipcode, String city) {
+		super();
+		this.addressId = addressId;
+		this.street = street;
+		this.houseNo = houseNo;
+		this.zipcode = zipcode;
+		this.city = city;
+	}
 	
 	public Long getAddressId() {
 		return addressId;

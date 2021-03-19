@@ -11,6 +11,11 @@ public class SaleOrderLine {
 		this.quantity = quantity;
 	}
 	
+	public SaleOrderLine(Product product, int quantity) {
+		this.product = product;
+		this.quantity = quantity;
+	}
+	
 	public long getId() {
 		return id;
 	}
